@@ -1,0 +1,48 @@
+# Mini Pokédex - TypeScript & Programação Orientada a Objetos
+
+Este projeto consiste em uma aplicação back-end robusta em TypeScript que consome a API externa [PokeAPI](https://pokeapi.co/) em tempo de execução para gerenciar um catálogo local de Pokémon em memória. O projeto foi desenvolvido seguindo os princípios de Programação Orientada a Objetos (POO), modularidade (evitando códigos monolíticos) e utilizando o fluxo de trabalho GitFlow.
+
+##  Links do Projeto
+*   **Quadro Kanban (Trello/Notion):** [https://github.com/users/fernandopereira-tech/projects/1/views/1]
+
+---
+
+##  Tecnologias, Ferramentas e Ambiente
+*   **Ambiente de Desenvolvimento:** Windows Subsystem for Linux (WSL2 - Ubuntu)
+*   **Editor:** VS Code
+*   **Runtime:** Node.js v22.22.2
+*   **Linguagem:** TypeScript v6.0.3 (Configurado em modo estrito com `verbatimModuleSyntax`)
+*   **Executor de Scripts:** TSX (TypeScript Execute)
+
+---
+
+##  Conceitos Aplicados e Justificativas
+
+### 1. Ausência de Código Monolítico
+O sistema foi totalmente fatiado em módulos com responsabilidades únicas e bem definidas, garantindo manutenibilidade e separação clara de conceitos:
+*   `src/types.ts`: Centraliza exclusivamente as interfaces de tipagem dos dados.
+*   `src/pokeApi.ts`: Módulo de infraestrutura responsável única e exclusivamente pela integração e consumo da API externa.
+*   `src/catalogo.ts`: Centraliza a regra de negócio do catálogo utilizando POO.
+*   `src/main.ts`: Ponto de entrada que orquestra a execução e executa o fluxo de testes.
+
+### 2. Programação Orientada a Objetos (POO) e Encapsulamento
+A classe `CatalogoPokemon` foi implementada para centralizar as regras de gerenciamento. O array de dados foi definido como `private pokemons` para garantir o **encapsulamento**. Isso impede que o estado da lista seja manipulado de forma maliciosa ou inadequada por fora da classe, obrigando o uso estrito dos métodos públicos (`adicionar`, `listar`, `remover`).
+
+### 3. Métodos de Iteração e Manipulação de Array (ES6+)
+A manipulação da lista interna evitou estruturas de repetição legadas (como loops `for` tradicionais) e adotou métodos modernos da API de Arrays do JavaScript:
+*   `.map()`: Utilizado para transformar a estrutura complexa de tipos da PokeAPI em um array limpo de strings.
+*   `.some()`: Utilizado para verificar a existência do ID de forma rápida e performática, impedindo duplicidade no catálogo.
+*   `.forEach()`: Utilizado para iterar sobre a coleção e exibir as informações formatadas no console.
+*   `.filter()`: Utilizado para gerar um novo array excluindo o Pokémon que foi solicitado para remoção.
+
+### 4. Tratamento de Erros e Resiliência
+A comunicação externa implementa blocos `try/catch` associados à validação do código de status HTTP da resposta. Caso a API retorne um erro `404` (Pokémon não encontrado), a aplicação captura e trata a exceção adequadamente, exibindo uma mensagem amigável no console (`[ERRO] Pokémon não encontrado.`) sem interromper abruptamente a execução do sistema.
+
+---
+
+## Como Executar o Projeto
+
+1. Certifique-se de estar em um ambiente com Node.js instalado (preferencialmente v22).
+2. Instale as dependências do projeto:
+```bash
+   npm install
