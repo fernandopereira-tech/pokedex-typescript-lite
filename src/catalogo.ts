@@ -1,10 +1,9 @@
-// O 'type' é obrigatório aqui por causa do verbatimModuleSyntax
 import type { PokemonResumo } from './types.js';
 
 export class CatalogoPokemon {
   private pokemons: PokemonResumo[] = [];
 
-  // RF08 & RF11 - Adiciona um Pokémon impedindo duplicidade
+
   public adicionar(pokemon: PokemonResumo): void {
     const jaExiste = this.pokemons.some(p => p.id === pokemon.id);
 
@@ -17,7 +16,6 @@ export class CatalogoPokemon {
     console.log(`[OK] ${pokemon.nome} adicionado ao catálogo com sucesso!`);
   }
 
-  // RF09 & RF11 - Lista todos os Pokémon ou avisa se estiver vazio
   public listar(): void {
     if (this.pokemons.length === 0) {
       console.log('[AVISO] O catálogo está vazio.');
@@ -33,16 +31,15 @@ export class CatalogoPokemon {
     });
   }
 
-  // RF10 & RF11 - Remove um Pokémon por ID
   public remover(id: number): void {
-    const existe = this.pokemons.some(p => p.id === id);
+    const index = this.pokemons.findIndex(p => p.id === id);
 
-    if (!existe) {
+    if (index === -1) {
       console.log(`[ERRO] Pokémon com ID ${id} não encontrado no catálogo.`);
       return;
     }
 
-    this.pokemons = this.pokemons.filter(p => p.id !== id);
+    this.pokemons.splice(index, 1);
     console.log('[OK] Pokémon removido do catálogo.');
   }
 }
