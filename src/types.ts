@@ -1,5 +1,3 @@
-// RF03 - Interface que mapeia a estrutura exata (bruta) que vem da PokeAPI
-// Tipamos apenas as propriedades que o projeto exige consumir.
 export interface PokemonApiResponse {
   id: number;
   name: string;
@@ -13,11 +11,10 @@ export interface PokemonApiResponse {
   }[];
 }
 
-// RF02 - Interface para o Pokémon formatado e simplificado (Lite) que usaremos no catálogo
 export interface PokemonResumo {
   id: number;
   nome: string;
-  tipos: string[]; // Aqui guardaremos apenas os nomes dos tipos num array de strings simples (ex: ['electric'])
+  tipos: string[]; 
   altura: number;
   peso: number;
 }
