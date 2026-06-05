@@ -1,6 +1,23 @@
 # Mini Pokédex - TypeScript & Programação Orientada a Objetos
 
-Este projeto consiste em uma aplicação back-end robusta em TypeScript que consome a API externa [PokeAPI](https://pokeapi.co/) em tempo de execução para gerenciar um catálogo local de Pokémon em memória. O projeto foi desenvolvido seguindo os princípios de Programação Orientada a Objetos (POO), modularidade (evitando códigos monolíticos) e utilizando o fluxo de trabalho GitFlow.
+## Sobre o Projeto
+
+Este projeto consiste em uma aplicação back-end em TypeScript que consome a API externa PokeAPI (https://pokeapi.co/) em tempo de execução para gerenciar um catálogo local de Pokémon em memória.
+
+## Objetivo
+
+Praticar conceitos de:
+
+- Node.js
+- TypeScript
+- Interfaces
+- Classes
+- Métodos de Array
+- Async/Await
+- Fetch
+- Tratamento de Erros
+- Programação Orientada a Objetos
+- GitFlow
 
 ##  Links do Projeto
 *   **Quadro Kanban (GitHub Projetos):** [https://github.com/users/fernandopereira-tech/projects/1/views/1]
@@ -13,6 +30,78 @@ Este projeto consiste em uma aplicação back-end robusta em TypeScript que cons
 *   **Runtime:** Node.js v22
 *   **Linguagem:** TypeScript (Configurado em modo estrito)
 *   **Executor de Scripts:** TSX (TypeScript Execute)
+
+---
+
+## Pré-requisitos
+
+Antes de executar o projeto é necessário possuir:
+
+- Node.js v22 ou superior
+- npm
+- Git
+
+
+## Como Instalar
+
+-> Clone o repositório:
+git clone https://github.com/fernandopereira-tech/pokedex-typescript-lite.git
+
+-> Entre na pasta:
+cd pokedex-typescript-lite
+
+-> Instale as dependências:
+npm install
+
+## Como Executar
+
+-> Execute o projeto:
+
+npm run dev
+
+---
+
+## Funcionalidades
+
+- Buscar Pokémon por nome
+- Buscar Pokémon por ID
+- Consumir dados da PokeAPI
+- Mapear resposta JSON para objeto simplificado
+- Adicionar Pokémon ao catálogo
+- Impedir registros duplicados
+- Listar catálogo
+- Remover Pokémon por ID
+- Tratar erros de busca
+
+## Estrutura dos Arquivos
+
+### src/main.ts
+
+Ponto de entrada da aplicação.
+
+### src/types.ts
+
+Interfaces e tipagens utilizadas no projeto.
+
+### src/pokeApi.ts
+
+Responsável pela integração com a PokeAPI.
+
+### src/catalogo.ts
+
+Implementa a classe CatalogoPokemon e suas regras de negócio.
+
+### package.json
+
+Dependências e scripts do projeto.
+
+### tsconfig.json
+
+Configurações do compilador TypeScript.
+
+### pc_box.json
+
+Arquivo JSON inicializado com array vazio.
 
 ---
 
@@ -40,9 +129,53 @@ A comunicação externa implementa blocos `try/catch` associados à validação 
 
 ---
 
-##  Como Executar o Projeto
+## Exemplos de Execução
 
-1. Certifique-se de estar em um ambiente com Node.js instalado (v22).
-2. Instale as dependências do projeto:
-```bash
-npm install
+### Catálogo vazio
+
+```text
+[AVISO] O catálogo está vazio.
+```
+
+### Busca e inserção
+
+```text
+[OK] pikachu adicionado ao catálogo com sucesso!
+[OK] bulbasaur adicionado ao catálogo com sucesso!
+```
+
+### Listagem
+
+```text
+ID: 25 | Nome: pikachu
+Tipos: electric
+Altura: 4 | Peso: 60
+
+ID: 1 | Nome: bulbasaur
+Tipos: grass, poison
+Altura: 7 | Peso: 69
+```
+
+### Duplicidade
+
+```text
+[AVISO] pikachu já está no catálogo.
+```
+
+### Pokémon inexistente
+
+```text
+[ERRO] Pokémon não encontrado.
+```
+
+### Remoção
+
+```text
+[OK] Pokémon removido do catálogo.
+```
+
+### Remoção inválida
+
+```text
+[ERRO] Pokémon com ID 999 não encontrado no catálogo.
+```
