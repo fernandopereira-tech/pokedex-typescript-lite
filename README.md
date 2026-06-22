@@ -19,8 +19,9 @@ Praticar conceitos de:
 - Programação Orientada a Objetos
 - GitFlow
 
-##  Links do Projeto
-*   **Quadro Kanban (GitHub Projetos):** [https://github.com/users/fernandopereira-tech/projects/1/views/1]
+## 🔗 Links do Projeto
+* **Demonstração Online (Manus Space):** [https://pokedashboard-zq6pkzee.manus.space/]
+* **Quadro Kanban (GitHub Projetos):** [https://github.com/users/fernandopereira-tech/projects/1/views/1]
 
 ---
 
